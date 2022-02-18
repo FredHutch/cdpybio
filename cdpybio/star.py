@@ -776,8 +776,8 @@ def _read_log(fn, define_sample_name=None):
     if define_sample_name == None:
         define_sample_name = lambda x: x
     df = pd.read_table(fn, '|', header=None).dropna()
-    df.index = df.ix[:,0].apply(lambda x: x.strip())
-    df = pd.DataFrame(df.ix[:,1].apply(lambda x: x.strip()))
+    df.index = df.iloc[:,0].apply(lambda x: x.strip())
+    df = pd.DataFrame(df.iloc[:,1].apply(lambda x: x.strip()))
     if define_sample_name:
         df.columns = [define_sample_name(fn)]
     else:
